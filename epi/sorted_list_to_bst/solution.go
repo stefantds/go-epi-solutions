@@ -5,6 +5,25 @@ import (
 )
 
 func BuildBSTFromSortedList(l *list.DoublyLinkedNode, length int) *list.DoublyLinkedNode {
-	// TODO - Add your code here
-	return nil
+	head := l
+	result, _ := buildSortedListHelper(0, length, head)
+	return result
+}
+
+func buildSortedListHelper(start, end int, currentHead *list.DoublyLinkedNode) (result, next *list.DoublyLinkedNode) {
+	if start >= end {
+		return nil, currentHead
+	}
+
+	mid := start + (end-start)/2
+	left, head := buildSortedListHelper(start, mid, currentHead)
+
+	curr := head
+	head.Prev = left
+	head = head.Next
+
+	nextCurr, nextHead := buildSortedListHelper(mid+1, end, head)
+	curr.Next = nextCurr
+
+	return curr, nextHead
 }

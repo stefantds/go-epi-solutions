@@ -1,34 +1,38 @@
 package search_maze
 
+import "reflect"
+
 func SearchMaze(maze [][]Color, s Coordinate, e Coordinate) []Coordinate {
 	path := make([]Coordinate, 0)
-	searchPath(maze, s, e, &path)
+	searchMazeHelper(maze, s, e, &path)
 	return path
 }
 
-func searchPath(maze [][]Color, s Coordinate, e Coordinate, pathSoFar *[]Coordinate) bool {
-	if s.X < 0 || s.Y < 0 || s.X >= len(maze) || s.Y >= len(maze[s.X]) || maze[s.X][s.Y] == Black {
+func searchMazeHelper(maze [][]Color, cur, e Coordinate, path *[]Coordinate) bool {
+	if cur.X < 0 || cur.X >= len(maze) || cur.Y < 0 || cur.Y >= len(maze[0]) || maze[cur.X][cur.Y] != White {
 		return false
 	}
 
-	maze[s.X][s.Y] = Black
-	*pathSoFar = append(*pathSoFar, s)
+	*path = append(*path, cur)
+	maze[cur.X][cur.Y] = Black
 
-	if s.Equal(e) {
+	if reflect.DeepEqual(cur, e) {
 		return true
 	}
 
-	for _, c := range []Coordinate{
-		{X: s.X - 1, Y: s.Y},
-		{X: s.X + 1, Y: s.Y},
-		{X: s.X, Y: s.Y - 1},
-		{X: s.X, Y: s.Y + 1},
+	for _, nextMove := range []Coordinate{
+		{cur.X, cur.Y + 1},
+		{cur.X, cur.Y - 1},
+		{cur.X + 1, cur.Y},
+		{cur.X - 1, cur.Y},
 	} {
-		if searchPath(maze, c, e, pathSoFar) {
+		if searchMazeHelper(maze, nextMove, e, path) {
 			return true
 		}
 	}
 
-	*pathSoFar = (*pathSoFar)[:len(*pathSoFar)-1]
+	// remove current element, since it didn't lead to the end
+	*path = (*path)[0 : len(*path)-1]
+
 	return false
 }
