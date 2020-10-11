@@ -1,6 +1,15 @@
 package h_index
 
+import (
+	"sort"
+)
+
 func HIndex(citations []int) int {
-	// TODO - Add your code here
+	sort.Ints(citations)
+	for i, c := range citations {
+		if c >= len(citations)-i {
+			return len(citations) - i
+		}
+	}
 	return 0
 }
