@@ -1,22 +1,25 @@
 package lru_cache
 
-import "github.com/stefantds/go-epi-judge/list"
-
 type KeyValue struct {
 	Key   int
 	Value int
 }
 
 type LRUCache struct {
-	valuesMap map[int]*list.DoublyLinkedNode
-	oldestVal *list.DoublyLinkedNode
-	newestVal *list.DoublyLinkedNode
+	valuesMap map[int]*DoublyLinkedNode
+	oldestVal *DoublyLinkedNode
+	newestVal *DoublyLinkedNode
 	capacity  int
+}
+
+type DoublyLinkedNode struct {
+	Data       KeyValue
+	Prev, Next *DoublyLinkedNode
 }
 
 func NewLRUCache(capacity int) LRUCache {
 	return LRUCache{
-		valuesMap: make(map[int]*list.DoublyLinkedNode, 0),
+		valuesMap: make(map[int]*DoublyLinkedNode, 0),
 		oldestVal: nil,
 		newestVal: nil,
 		capacity:  capacity,
@@ -27,7 +30,7 @@ func (q *LRUCache) Lookup(key int) int {
 	val, ok := q.valuesMap[key]
 	if ok {
 		q.moveToFront(val)
-		return val.Data.(KeyValue).Value
+		return val.Data.Value
 	}
 	return -1
 }
@@ -38,7 +41,7 @@ func (q *LRUCache) Insert(key, value int) {
 		q.moveToFront(val)
 		return
 	}
-	newNode := list.DoublyLinkedNode{
+	newNode := DoublyLinkedNode{
 		Data: KeyValue{
 			Value: value,
 			Key:   key,
@@ -62,7 +65,7 @@ func (q *LRUCache) Erase(key int) bool {
 	return true
 }
 
-func (q *LRUCache) moveToFront(n *list.DoublyLinkedNode) {
+func (q *LRUCache) moveToFront(n *DoublyLinkedNode) {
 	if n == q.newestVal {
 		return
 	}
@@ -70,7 +73,7 @@ func (q *LRUCache) moveToFront(n *list.DoublyLinkedNode) {
 	q.insertToFront(n)
 }
 
-func (q *LRUCache) insertToFront(n *list.DoublyLinkedNode) {
+func (q *LRUCache) insertToFront(n *DoublyLinkedNode) {
 	n.Prev = nil
 	n.Next = q.newestVal
 	if n.Next != nil {
@@ -86,11 +89,11 @@ func (q *LRUCache) ejectOldest() {
 	if q.oldestVal == nil {
 		return
 	}
-	delete(q.valuesMap, q.oldestVal.Data.(KeyValue).Key)
+	delete(q.valuesMap, q.oldestVal.Data.Key)
 	q.disconnectNode(q.oldestVal)
 }
 
-func (q *LRUCache) disconnectNode(n *list.DoublyLinkedNode) {
+func (q *LRUCache) disconnectNode(n *DoublyLinkedNode) {
 	if n == q.oldestVal {
 		q.oldestVal = n.Prev
 	}
