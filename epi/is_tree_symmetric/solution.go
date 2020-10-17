@@ -4,12 +4,12 @@ import (
 	"github.com/stefantds/go-epi-judge/tree"
 )
 
-func IsSymmetric(tree *tree.BinaryTreeNode) bool {
-	if tree == nil {
+func IsSymmetric(t *tree.BinaryTreeNode) bool {
+	if t == nil {
 		return true
 	}
 
-	return checkSymmetric(tree.Left, tree.Right)
+	return checkSymmetric(t.Left, t.Right)
 }
 
 func checkSymmetric(subtree0 *tree.BinaryTreeNode, subtree1 *tree.BinaryTreeNode) bool {

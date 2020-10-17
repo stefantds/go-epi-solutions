@@ -4,12 +4,12 @@ import (
 	"github.com/stefantds/go-epi-judge/tree"
 )
 
-func FindLCA(t *t.BSTNode, s *tree.BSTNode, b *tree.BSTNode) *tree.BSTNode {
+func FindLCA(t *tree.BSTNode, s *tree.BSTNode, b *tree.BSTNode) *tree.BSTNode {
 	if t == nil { // only happens if no node satisfies the condition
 		return nil
 	}
 
-	var lca *t.BSTNode
+	var lca *tree.BSTNode
 	switch {
 	case s == t:
 		lca = s

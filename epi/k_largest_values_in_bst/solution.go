@@ -4,23 +4,23 @@ import (
 	"github.com/stefantds/go-epi-judge/tree"
 )
 
-func FindKLargestInBst(tree *tree.BSTNode, k int) []int {
+func FindKLargestInBst(t *tree.BSTNode, k int) []int {
 	result := make([]int, 0, k)
-	findKLargestInBstHelper(tree, k, &result)
+	findKLargestInBstHelper(t, k, &result)
 
 	return result
 }
 
-func findKLargestInBstHelper(tree *tree.BSTNode, k int, currentList *[]int) {
-	if tree == nil || len(*currentList) == k {
+func findKLargestInBstHelper(t *tree.BSTNode, k int, currentList *[]int) {
+	if t == nil || len(*currentList) == k {
 		return
 	}
 
-	findKLargestInBstHelper(tree.Right, k, currentList)
+	findKLargestInBstHelper(t.Right, k, currentList)
 
 	if len(*currentList) < k {
-		*currentList = append(*currentList, tree.Data)
+		*currentList = append(*currentList, t.Data)
 	}
 
-	findKLargestInBstHelper(tree.Left, k, currentList)
+	findKLargestInBstHelper(t.Left, k, currentList)
 }

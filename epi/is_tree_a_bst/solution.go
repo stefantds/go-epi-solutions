@@ -6,19 +6,19 @@ import (
 	"github.com/stefantds/go-epi-judge/tree"
 )
 
-func IsBinaryTreeBST(tree *tree.BinaryTreeNode) bool {
-	return areKeysInRange(tree, math.MinInt32, math.MaxInt32)
+func IsBinaryTreeBST(t *tree.BinaryTreeNode) bool {
+	return areKeysInRange(t, math.MinInt32, math.MaxInt32)
 }
 
-func areKeysInRange(tree *tree.BinaryTreeNode, min, max int) bool {
-	if tree == nil {
+func areKeysInRange(t *tree.BinaryTreeNode, min, max int) bool {
+	if t == nil {
 		return true
 	}
 
-	if tree.Data > max || tree.Data < min {
+	if t.Data > max || t.Data < min {
 		return false
 	}
 
-	return areKeysInRange(tree.Left, min, tree.Data) &&
-		areKeysInRange(tree.Right, tree.Data, max)
+	return areKeysInRange(t.Left, min, t.Data) &&
+		areKeysInRange(t.Right, t.Data, max)
 }
