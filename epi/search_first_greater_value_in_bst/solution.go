@@ -5,6 +5,22 @@ import (
 )
 
 func FindFirstGreaterThanK(t *tree.BSTNode, k int) *tree.BSTNode {
-	// TODO - Add your code here
-	return nil
+	if t == nil {
+		return nil
+	}
+	if t.Data > k {
+		if t.Left == nil {
+			return t
+		} else {
+			if foundLeft := FindFirstGreaterThanK(t.Left, k); foundLeft != nil {
+				return foundLeft
+			}
+			return t
+		}
+	} else { // t.Data <= k
+		if t.Right != nil {
+			return FindFirstGreaterThanK(t.Right, k)
+		}
+		return nil
+	}
 }

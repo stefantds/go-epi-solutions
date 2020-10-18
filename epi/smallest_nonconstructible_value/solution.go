@@ -13,6 +13,8 @@ func SmallestNonconstructibleValue(a []int) int {
 			// all values smaller than smallestNC can be created, so by adding v all values until
 			// smallestNC+v can be constructed as well.
 			smallestNC += v
+		} else {
+			break
 		}
 	}
 

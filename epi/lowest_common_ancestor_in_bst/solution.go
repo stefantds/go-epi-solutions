@@ -11,10 +11,8 @@ func FindLCA(t *tree.BSTNode, s *tree.BSTNode, b *tree.BSTNode) *tree.BSTNode {
 
 	var lca *tree.BSTNode
 	switch {
-	case s == t:
-		lca = s
-	case b == t:
-		lca = b
+	case s == t || b == t:
+		lca = t
 	case t.Data > s.Data && t.Data < b.Data:
 		lca = t
 	case t.Data < s.Data && t.Data > b.Data:
