@@ -59,7 +59,7 @@ func TestSearchBST(t *testing.T) {
 	}
 }
 
-func searchBSTWrapper(t *tree.BSTNode, key int) int {
+func searchBSTWrapper(tree *tree.BSTNode, key int) int {
 	if result := SearchBST(tree, key); result != nil {
 		return result.Data
 	}

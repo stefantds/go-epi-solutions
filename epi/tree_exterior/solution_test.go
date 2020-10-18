@@ -61,7 +61,7 @@ func TestExteriorBinaryTree(t *testing.T) {
 	}
 }
 
-func exteriorBinaryTreeWrapper(t *tree.BinaryTreeNode) ([]int, error) {
+func exteriorBinaryTreeWrapper(tree *tree.BinaryTreeNode) ([]int, error) {
 	result := ExteriorBinaryTree(tree)
 	return createOutputList(result)
 }

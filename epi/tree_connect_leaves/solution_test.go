@@ -60,7 +60,7 @@ func TestCreateListOfLeaves(t *testing.T) {
 	}
 }
 
-func createListOfLeavesWrapper(t *tree.BinaryTreeNode) ([]int, error) {
+func createListOfLeavesWrapper(tree *tree.BinaryTreeNode) ([]int, error) {
 	result := CreateListOfLeaves(tree)
 
 	for i, n := range result {

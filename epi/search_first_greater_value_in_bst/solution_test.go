@@ -62,7 +62,7 @@ func TestFindFirstGreaterThanK(t *testing.T) {
 	}
 }
 
-func findFirstGreaterThanKWrapper(t *tree.BSTNode, k int) (int, error) {
+func findFirstGreaterThanKWrapper(tree *tree.BSTNode, k int) (int, error) {
 	if result := FindFirstGreaterThanK(tree, k); result != nil {
 		return result.Data, nil
 	}
