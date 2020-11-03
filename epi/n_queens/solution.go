@@ -15,9 +15,7 @@ func nQueensHelper(n int, row int, colPlacement []int, result *[][]int) {
 
 	for col := 0; col < n; col++ {
 		if isValid(colPlacement, col) {
-			colPlacement = append(colPlacement, col)
-			nQueensHelper(n, row+1, colPlacement, result)
-			colPlacement = colPlacement[:len(colPlacement)-1]
+			nQueensHelper(n, row+1, append(colPlacement, col), result)
 		}
 	}
 }
@@ -38,3 +36,18 @@ func isValid(currentPlacement []int, newItem int) bool {
 	}
 	return true
 }
+
+/**
+q _ _ _ _
+_ q _ _ _
+_ = x _ _
+_ = _ q _
+_ _ = = x
+
+q x x x
+x x _ _
+x _ q _
+x _ _ x
+
+(n-2)*(3n-2) < n2, n >= 4
+**/

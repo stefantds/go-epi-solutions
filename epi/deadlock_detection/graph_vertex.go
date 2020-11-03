@@ -1,5 +1,8 @@
 package deadlock_detection
 
+type VertexState int
+
 type GraphVertex struct {
-	Edges []*GraphVertex
+	Edges   []*GraphVertex
+	Visited bool
 }
