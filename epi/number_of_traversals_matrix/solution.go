@@ -12,7 +12,7 @@ func countTraversals(row int, col int, cache [][]int) int {
 	if row < 0 || col < 0 {
 		return 0
 	}
-	if row == 0 && col == 0 {
+	if row == 0 || col == 0 {
 		return 1
 	}
 	if cache[row][col] != 0 {
