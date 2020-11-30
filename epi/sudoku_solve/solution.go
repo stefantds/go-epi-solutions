@@ -2,7 +2,7 @@ package sudoku_solve
 
 import "math"
 
-const emptyEntry = 0
+const EmptyEntry = 0
 
 func SolveSudoku(partialAssignment [][]int) bool {
 	return solvePartialSudoku(0, 0, partialAssignment)
@@ -30,7 +30,7 @@ func solvePartialSudoku(i, j int, partialAssignment [][]int) bool {
 		}
 	}
 
-	partialAssignment[i][j] = emptyEntry // undo unsuccessful attempt
+	partialAssignment[i][j] = EmptyEntry // undo unsuccessful attempt
 	return false
 }
 
