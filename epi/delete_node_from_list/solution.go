@@ -5,5 +5,6 @@ import (
 )
 
 func DeletionFromList(nodeToDelete *list.Node) {
-	// TODO - Add your code here
+	nodeToDelete.Data = nodeToDelete.Next.Data
+	nodeToDelete.Next = nodeToDelete.Next.Next // nodeToDelete is guaranteed not to be the tail node
 }

@@ -5,6 +5,13 @@ import (
 )
 
 func RemoveDuplicates(l *list.Node) *list.Node {
-	// TODO - Add your code here
-	return nil
+	for iter := l; iter != nil; {
+		if iter.Next != nil && iter.Data == iter.Next.Data {
+			iter.Next = iter.Next.Next
+		} else {
+			iter = iter.Next
+		}
+	}
+
+	return l
 }
