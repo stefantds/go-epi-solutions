@@ -5,6 +5,13 @@ import (
 )
 
 func HasPathSum(t *tree.BinaryTreeNode, remainingWeight int) bool {
-	// TODO - Add your code here
-	return false
+	if t == nil {
+		return false
+	}
+
+	if t.Left == nil && t.Right == nil && t.Data == remainingWeight {
+		return true
+	}
+
+	return HasPathSum(t.Left, remainingWeight-t.Data) || HasPathSum(t.Right, remainingWeight-t.Data)
 }
