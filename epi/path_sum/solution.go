@@ -13,5 +13,6 @@ func HasPathSum(t *tree.BinaryTreeNode, remainingWeight int) bool {
 		return true
 	}
 
-	return HasPathSum(t.Left, remainingWeight-t.Data) || HasPathSum(t.Right, remainingWeight-t.Data)
+	return HasPathSum(t.Left, remainingWeight-t.Data) ||
+		HasPathSum(t.Right, remainingWeight-t.Data)
 }
