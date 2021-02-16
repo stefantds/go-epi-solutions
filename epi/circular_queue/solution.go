@@ -2,14 +2,20 @@ package circular_queue
 
 import "errors"
 
+type Solution interface {
+	Enqueue(x int)
+	Dequeue() int
+	Size() int
+}
+
 type Queue struct {
 	values     []int
 	itemsCount int
 	tail       int
 }
 
-func NewQueue(capacity int) Queue {
-	return Queue{
+func NewQueue(capacity int) Solution {
+	return &Queue{
 		values:     make([]int, capacity),
 		itemsCount: 0,
 		tail:       0,

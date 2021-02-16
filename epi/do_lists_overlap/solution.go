@@ -1,9 +1,9 @@
 package do_lists_overlap
 
 import (
+	"github.com/stefantds/go-epi-judge/data_structures/list"
 	"github.com/stefantds/go-epi-judge/epi/do_terminated_lists_overlap"
 	"github.com/stefantds/go-epi-judge/epi/is_list_cyclic"
-	"github.com/stefantds/go-epi-judge/list"
 )
 
 func OverlappingLists(l0 *list.Node, l1 *list.Node) *list.Node {

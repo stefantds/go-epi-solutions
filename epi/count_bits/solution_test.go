@@ -10,7 +10,15 @@ import (
 	"github.com/stefantds/csvdecoder"
 
 	. "github.com/stefantds/go-epi-judge/epi/count_bits"
+	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
+
+type solutionFunc = func(int) int
+
+var solutions = []solutionFunc{
+	CountBits,
+	CountBitsV2,
+}
 
 func TestCountBits(t *testing.T) {
 	testFileName := filepath.Join(cfg.TestDataFolder, "count_bits.tsv")
@@ -22,7 +30,7 @@ func TestCountBits(t *testing.T) {
 
 	type TestCase struct {
 		X              int
-		ExpectedResult int16
+		ExpectedResult int
 		Details        string
 	}
 
@@ -41,15 +49,17 @@ func TestCountBits(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		t.Run(fmt.Sprintf("Test Case %d", i), func(t *testing.T) {
-			if cfg.RunParallelTests {
-				t.Parallel()
-			}
-			result := CountBits(tc.X)
-			if !reflect.DeepEqual(result, tc.ExpectedResult) {
-				t.Errorf("\ngot:\n%v\nwant:\n%v", result, tc.ExpectedResult)
-			}
-		})
+		for _, s := range solutions {
+			t.Run(fmt.Sprintf("Test Case %d %v", i, utils.GetFuncName(s)), func(t *testing.T) {
+				if cfg.RunParallelTests {
+					t.Parallel()
+				}
+				result := s(tc.X)
+				if !reflect.DeepEqual(result, tc.ExpectedResult) {
+					t.Errorf("\ngot:\n%v\nwant:\n%v", result, tc.ExpectedResult)
+				}
+			})
+		}
 	}
 	if err = parser.Err(); err != nil {
 		t.Fatalf("parsing error: %s", err)

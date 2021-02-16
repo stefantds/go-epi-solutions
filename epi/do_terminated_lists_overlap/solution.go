@@ -1,8 +1,8 @@
 package do_terminated_lists_overlap
 
 import (
-	"github.com/stefantds/go-epi-judge/list"
-	"github.com/stefantds/go-epi-judge/utils"
+	"github.com/stefantds/go-epi-judge/data_structures/list"
+	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
 
 func OverlappingNoCycleLists(l0 *list.Node, l1 *list.Node) *list.Node {

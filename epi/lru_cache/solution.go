@@ -5,6 +5,12 @@ type KeyValue struct {
 	Value int
 }
 
+type Solution interface {
+	Lookup(key int) int
+	Insert(key, value int)
+	Erase(key int) bool
+}
+
 type LRUCache struct {
 	valuesMap map[int]*DoublyLinkedNode
 	oldestVal *DoublyLinkedNode
@@ -17,8 +23,8 @@ type DoublyLinkedNode struct {
 	Prev, Next *DoublyLinkedNode
 }
 
-func NewLRUCache(capacity int) LRUCache {
-	return LRUCache{
+func NewLRUCache(capacity int) Solution {
+	return &LRUCache{
 		valuesMap: make(map[int]*DoublyLinkedNode, 0),
 		oldestVal: nil,
 		newestVal: nil,
