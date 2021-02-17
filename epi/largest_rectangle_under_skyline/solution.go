@@ -1,7 +1,7 @@
 package largest_rectangle_under_skyline
 
 import (
-	"github.com/stefantds/go-epi-judge/utils"
+	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
 
 func CalculateLargestRectangle(heights []int) int {

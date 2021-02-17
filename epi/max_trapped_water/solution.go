@@ -3,7 +3,7 @@ package max_trapped_water
 import (
 	"math"
 
-	"github.com/stefantds/go-epi-judge/utils"
+	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
 
 func GetMaxTrappedWater(heights []int) int {

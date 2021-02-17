@@ -3,7 +3,7 @@ package minimum_distance_3_sorted_arrays
 import (
 	"math"
 
-	"github.com/stefantds/go-epi-judge/utils"
+	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
 
 func FindMinDistanceSortedArrays(sortedArrays [][]int) int {

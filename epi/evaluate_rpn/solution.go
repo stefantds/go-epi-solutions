@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/stefantds/go-epi-judge/stack"
+	"github.com/stefantds/go-epi-judge/data_structures/stack"
 )
 
 func Eval(expression string) int {

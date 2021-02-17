@@ -1,6 +1,6 @@
 package sunset_view
 
-import "github.com/stefantds/go-epi-judge/stack"
+import "github.com/stefantds/go-epi-judge/data_structures/stack"
 
 type building struct {
 	index  int

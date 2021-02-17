@@ -1,6 +1,8 @@
 package knapsack
 
-import "github.com/stefantds/go-epi-judge/utils"
+import (
+	utils "github.com/stefantds/go-epi-judge/test_utils"
+)
 
 func OptimumSubjectToCapacity(items []Item, capacity int) int {
 	cache := make([][]int, capacity+1)

@@ -1,13 +1,15 @@
 package string_transformability
 
-import "github.com/stefantds/go-epi-judge/utils"
+import (
+	"github.com/stefantds/go-epi-judge/data_structures/queue"
+)
 
 func TransformString(d map[string]struct{}, s string, t string) int {
 	// visited keeps visited words as keys and the distance from s to it as value
 	visited := make(map[string]int)
 	visited[s] = 0
 
-	bfsQueue := make(utils.Queue, 0)
+	bfsQueue := make(queue.Queue, 0)
 	bfsQueue = bfsQueue.Enqueue(s)
 
 	for !bfsQueue.IsEmpty() {

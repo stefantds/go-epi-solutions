@@ -1,7 +1,7 @@
 package levenshtein_distance
 
 import (
-	"github.com/stefantds/go-epi-judge/utils"
+	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
 
 func LevenshteinDistance(a string, b string) int {

@@ -1,6 +1,8 @@
 package is_circuit_wirable
 
-import "github.com/stefantds/go-epi-judge/utils"
+import (
+	"github.com/stefantds/go-epi-judge/data_structures/queue"
+)
 
 func IsAnyPlacementFeasible(graph []GraphVertex) bool {
 	if len(graph) == 0 {
@@ -21,7 +23,7 @@ func IsAnyPlacementFeasible(graph []GraphVertex) bool {
 }
 
 func isPlacementFeasible(startNode *GraphVertex) bool {
-	bfsQueue := make(utils.Queue, 0)
+	bfsQueue := make(queue.Queue, 0)
 
 	// assign once color to the starting vertex
 	startNode.VertexColor = white

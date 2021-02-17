@@ -1,6 +1,6 @@
 package hanoi
 
-import "github.com/stefantds/go-epi-judge/stack"
+import "github.com/stefantds/go-epi-judge/data_structures/stack"
 
 // only 3 pegs are supported, don't change this
 const NumPegs = 3

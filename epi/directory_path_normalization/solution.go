@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/stefantds/go-epi-judge/stack"
+	"github.com/stefantds/go-epi-judge/data_structures/stack"
 )
 
 func ShortestEquivalentPath(path string) string {

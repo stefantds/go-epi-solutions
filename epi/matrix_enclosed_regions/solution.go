@@ -1,7 +1,7 @@
 package matrix_enclosed_regions
 
 import (
-	"github.com/stefantds/go-epi-judge/utils"
+	"github.com/stefantds/go-epi-judge/data_structures/queue"
 )
 
 type coordinates struct {
@@ -37,7 +37,7 @@ func FillSurroundedRegions(board [][]Color) {
 // It only replaces the "fromColor" color with the "toColor" one, leaving
 // all other colors unchanged
 func markRegion(board [][]Color, startX, startY int, fromColor, toColor Color) {
-	q := make(utils.Queue, 0)
+	q := make(queue.Queue, 0)
 	q = q.Enqueue(coordinates{x: startX, y: startY})
 	for !q.IsEmpty() {
 		var value interface{}
