@@ -5,6 +5,13 @@ import (
 )
 
 func SearchList(l *list.Node, key int) *list.Node {
-	// TODO - Add your code here
-	return nil
+	cursor := l
+	for cursor.Data != key {
+		cursor = cursor.Next
+		if cursor == nil {
+			return nil
+		}
+	}
+
+	return cursor
 }

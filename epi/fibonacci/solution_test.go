@@ -17,6 +17,7 @@ type solutionFunc = func(int) int
 
 var solutions = []solutionFunc{
 	Fibonacci,
+	FibonacciCacheRecursive,
 }
 
 func TestFibonacci(t *testing.T) {

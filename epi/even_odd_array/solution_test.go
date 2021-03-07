@@ -16,6 +16,7 @@ type solutionFunc = func([]int)
 
 var solutions = []solutionFunc{
 	EvenOdd,
+	EvenOddVersion2,
 }
 
 func TestEvenOdd(t *testing.T) {
@@ -65,7 +66,7 @@ func evenOddWrapper(solution solutionFunc, a []int) error {
 	result := make([]int, len(a))
 	copy(result, a)
 
-	solution(a)
+	solution(result)
 
 	if err := utils.AssertAllValuesPresent(a, result); err != nil {
 		return err
@@ -73,8 +74,8 @@ func evenOddWrapper(solution solutionFunc, a []int) error {
 
 	inOdd := false
 
-	for i := 0; i < len(a); i++ {
-		if a[i]%2 == 0 {
+	for i := 0; i < len(result); i++ {
+		if result[i]%2 == 0 {
 			if inOdd {
 				return fmt.Errorf("even elements appear in odd part")
 			}

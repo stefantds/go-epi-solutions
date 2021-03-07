@@ -5,5 +5,6 @@ import (
 )
 
 func InsertAfter(node *list.Node, newNode *list.Node) {
-	// TODO - Add your code here
+	newNode.Next = node.Next
+	node.Next = newNode
 }

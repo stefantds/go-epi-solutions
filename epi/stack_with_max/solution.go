@@ -1,5 +1,7 @@
 package stack_with_max
 
+import "math"
+
 type Solution interface {
 	Push(x int)
 	Pop() int
@@ -8,29 +10,42 @@ type Solution interface {
 }
 
 type StackWithMax struct {
-	// TODO - Add your code here
+	values []int
+	maxes  []int
 }
 
 func NewStackWithMax() Solution {
-	// TODO - Add your code here
-	return &StackWithMax{}
+	return &StackWithMax{
+		values: make([]int, 0),
+		maxes:  make([]int, 0),
+	}
 }
 
 func (q *StackWithMax) Push(x int) {
-	// TODO - Add your code here
+	q.values = append(q.values, x)
+	if x >= q.Max() {
+		q.maxes = append(q.maxes, x)
+	}
 }
 
 func (q *StackWithMax) Pop() int {
-	// TODO - Add your code here
-	return 0
+	n := len(q.values)
+	var v int
+	q.values, v = q.values[:n-1], q.values[n-1]
+	if v == q.Max() {
+		q.maxes = q.maxes[:len(q.maxes)-1]
+	}
+	return v
 }
 
 func (q *StackWithMax) Max() int {
-	// TODO - Add your code here
-	return 0
+	if len(q.maxes) == 0 {
+		return math.MinInt64
+	}
+
+	return q.maxes[len(q.maxes)-1]
 }
 
 func (q *StackWithMax) Empty() bool {
-	// TODO - Add your code here
-	return false
+	return len(q.values) == 0
 }

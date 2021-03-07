@@ -5,5 +5,5 @@ import (
 )
 
 func DeleteList(aNode *list.Node) {
-	// TODO - Add your code here
+	aNode.Next = aNode.Next.Next
 }

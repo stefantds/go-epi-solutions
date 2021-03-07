@@ -19,6 +19,8 @@ type solutionFunc = func([]Item, int) int
 
 var solutions = []solutionFunc{
 	OptimumSubjectToCapacity,
+	KnapsackVariant1,
+	KnapsackVariant2,
 }
 
 func TestOptimumSubjectToCapacity(t *testing.T) {
