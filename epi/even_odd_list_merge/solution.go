@@ -5,6 +5,23 @@ import (
 )
 
 func EvenOddMerge(l *list.Node) *list.Node {
-	// TODO - Add your code here
-	return nil
+	dummyHeadEven := &list.Node{}
+	tailEven := dummyHeadEven
+	dummyHeadOdd := &list.Node{}
+	tailOdd := dummyHeadOdd
+
+	for current, idx := l, 0; current != nil; current, idx = current.Next, idx+1 {
+		if idx%2 == 0 {
+			tailEven.Next = current
+			tailEven = tailEven.Next
+		} else {
+			tailOdd.Next = current
+			tailOdd = tailOdd.Next
+		}
+	}
+
+	tailEven.Next = dummyHeadOdd.Next
+	tailOdd.Next = nil
+
+	return dummyHeadEven.Next
 }
