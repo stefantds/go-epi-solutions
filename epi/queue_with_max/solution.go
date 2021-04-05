@@ -7,24 +7,42 @@ type Solution interface {
 }
 
 type QueueWithMax struct {
-	// TODO - Add your code here
+	values []int
+	max    []int
 }
 
 func NewQueueWithMax() Solution {
-	// TODO - Add your code here
-	return &QueueWithMax{}
+	return &QueueWithMax{
+		values: make([]int, 0),
+		max:    make([]int, 0),
+	}
 }
 
 func (q *QueueWithMax) Enqueue(x int) {
-	// TODO - Add your code here
+	q.values = append(q.values, x)
+
+	// we can remove the elements in the max queue that are smaller than x
+	for len(q.max) > 0 && q.max[len(q.max)-1] < x {
+		q.max = q.max[:len(q.max)-1]
+	}
+	q.max = append(q.max, x)
 }
 
 func (q *QueueWithMax) Dequeue() int {
-	// TODO - Add your code here
-	return 0
+	if len(q.values) == 0 {
+		panic("dequeue called on an empty queue")
+	}
+	var value int
+	value, q.values = q.values[0], q.values[1:]
+	if value == q.max[0] {
+		q.max = q.max[1:] // remove the element from max queue
+	}
+	return value
 }
 
 func (q *QueueWithMax) Max() int {
-	// TODO - Add your code here
-	return 0
+	if len(q.max) == 0 {
+		panic("max called on an empty queue")
+	}
+	return q.max[0]
 }

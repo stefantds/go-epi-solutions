@@ -5,6 +5,17 @@ import (
 )
 
 func SearchBST(t *tree.BSTNode, key int) *tree.BSTNode {
-	// TODO - Add your code here
-	return nil
+	if t == nil {
+		return nil
+	}
+
+	if t.Data == key {
+		return t
+	}
+
+	if key < t.Data {
+		return SearchBST(t.Left, key)
+	} else {
+		return SearchBST(t.Right, key)
+	}
 }

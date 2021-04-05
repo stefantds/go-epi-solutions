@@ -16,6 +16,7 @@ type solutionFunc = func(a []int)
 
 var solutions = []solutionFunc{
 	Rearrange,
+	RearrangeLinearTime,
 }
 
 func TestRearrange(t *testing.T) {

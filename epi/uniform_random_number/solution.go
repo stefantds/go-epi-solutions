@@ -1,12 +1,23 @@
 package uniform_random_number
 
-import "math/rand"
+import (
+	"math"
+	"math/rand"
+)
 
 func zeroOneRandom() int {
 	return rand.Intn(2)
 }
 
 func UniformRandom(lowerBound int, upperBound int) int {
-	// TODO - Add your code here
-	return 0
+	limit := upperBound - lowerBound
+	result := math.MaxInt64
+	for result > limit {
+		result = 0
+		for i := 0; (1 << i) <= limit; i++ {
+			result = (result << 1) | zeroOneRandom()
+		}
+	}
+
+	return result + lowerBound
 }
