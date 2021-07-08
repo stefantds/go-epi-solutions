@@ -6,7 +6,7 @@ import (
 	"github.com/stefantds/go-epi-judge/pq"
 )
 
-func SortApproximatelySortedData(sequence chan int, k int) []int {
+func SortApproximatelySortedData(sequence <-chan int, k int) []int {
 	pq := make(pq.IntPriorityQueue, 0)
 	heap.Init(&pq)
 

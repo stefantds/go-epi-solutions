@@ -7,7 +7,7 @@ type building struct {
 	height int
 }
 
-func ExamineBuildingsWithSunset(sequence chan int) []int {
+func ExamineBuildingsWithSunset(sequence <-chan int) []int {
 	s := make(stack.Stack, 0)
 	i := 0
 	for h := range sequence {

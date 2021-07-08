@@ -6,7 +6,7 @@ import (
 	"github.com/stefantds/go-epi-judge/pq"
 )
 
-func OnlineMedian(sequence chan int) []float64 {
+func OnlineMedian(sequence <-chan int) []float64 {
 	topHalf := minHeap{
 		IntPriorityQueue: make(pq.IntPriorityQueue, 0),
 	}

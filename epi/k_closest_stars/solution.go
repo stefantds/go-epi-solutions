@@ -2,7 +2,7 @@ package k_closest_stars
 
 import "container/heap"
 
-func FindClosestKStars(stars chan Star, k int) []Star {
+func FindClosestKStars(stars <-chan Star, k int) []Star {
 	maxHeap := make(StarMaxHeap, 0)
 	heap.Init(&maxHeap)
 
