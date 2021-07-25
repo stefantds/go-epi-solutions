@@ -27,7 +27,7 @@ func FindAllSubstrings(s string, words []string) []int {
 		return true
 	}
 
-	for i := 0; i+wordSize*numWords <= len(sChars); i++ {
+	for i := 0; i <= len(sChars)-wordSize*numWords; i++ {
 		if matchAllWords(i) {
 			result = append(result, i)
 		}

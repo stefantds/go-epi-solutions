@@ -1,7 +1,5 @@
 package minimum_distance_3_sorted_arrays
 
-import "fmt"
-
 type BSTNode struct {
 	Data        ArrayData
 	Left, Right *BSTNode
@@ -29,9 +27,6 @@ func (n *BSTNode) Insert(value ArrayData) {
 func (n *BSTNode) Delete(value ArrayData) *BSTNode {
 	if n == nil {
 		panic("can't delete from a nil BST")
-	}
-	if value.Val == -45 && value.Idx == 0 {
-		fmt.Println("removed")
 	}
 	if less(n.Data, value) {
 		n.Right = n.Right.Delete(value)
