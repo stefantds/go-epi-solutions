@@ -20,11 +20,6 @@ func NewClientsCreditsInfo() Solution {
 	}
 }
 
-func NewClientsCreditsInfo() Solution {
-	// TODO - Add your code here
-	return &ClientsCreditsInfo{}
-}
-
 func (cc *ClientsCreditsInfo) Insert(clientID string, c int) {
 	cc.Remove(clientID)
 	cc.clientToCredit[clientID] = c - cc.offset
