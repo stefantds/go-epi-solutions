@@ -1,6 +1,6 @@
 package euclidean_gcd
 
-func EuclideanGCD(x int64, y int64) int64 {
+func EuclideanGCD(x int, y int) int {
 	if y > x {
 		x, y = y, x
 	}
