@@ -2,12 +2,12 @@ package tree_right_sibling
 
 func ConstructRightSibling(tree *BinaryTreeNodeWithNext) {
 	for tree != nil {
-		constructNextLevel(tree)
+		linkNextLevel(tree)
 		tree = tree.Left
 	}
 }
 
-func constructNextLevel(node *BinaryTreeNodeWithNext) {
+func linkNextLevel(node *BinaryTreeNodeWithNext) {
 	for node != nil && node.Left != nil {
 		node.Left.Next = node.Right
 		if node.Next != nil {

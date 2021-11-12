@@ -16,7 +16,8 @@ import (
 type solutionFunc = func(int, []int)
 
 var solutions = []solutionFunc{
-	RotateArray,
+	RotateArrayCyclicPermutations,
+	RotateArrayUsingReverse,
 }
 
 func TestRotateArray(t *testing.T) {
