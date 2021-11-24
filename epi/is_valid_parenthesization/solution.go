@@ -30,10 +30,6 @@ func IsWellFormed(s string) bool {
 		}
 	}
 
-	if len(unmatched) != 0 {
-		// too many open parentheses
-		return false
-	}
-
-	return true
+	// returns false if too many open parentheses
+	return len(unmatched) != 0
 }

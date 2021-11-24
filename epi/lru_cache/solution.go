@@ -25,7 +25,7 @@ type DoublyLinkedNode struct {
 
 func NewLRUCache(capacity int) Solution {
 	return &LRUCache{
-		valuesMap: make(map[int]*DoublyLinkedNode, 0),
+		valuesMap: make(map[int]*DoublyLinkedNode),
 		oldestVal: nil,
 		newestVal: nil,
 		capacity:  capacity,

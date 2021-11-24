@@ -15,6 +15,4 @@ func flip(x int, y int, image *[][]bool, flipColor bool) {
 	flip(x+1, y, image, flipColor)
 	flip(x, y-1, image, flipColor)
 	flip(x, y+1, image, flipColor)
-
-	return
 }

@@ -7,10 +7,7 @@ import (
 
 func FindMinimumVisits(intervals []Interval) int {
 	sort.Slice(intervals, func(i, j int) bool {
-		if intervals[i].Right <= intervals[j].Right {
-			return true
-		}
-		return false
+		return intervals[i].Right <= intervals[j].Right
 	})
 
 	lastVisit := math.MinInt64
