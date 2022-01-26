@@ -17,6 +17,7 @@ type solutionFunc = func([]int) int
 
 var solutions = []solutionFunc{
 	FindBiggestProductNMinusOneProduct,
+	FindBiggestProductNMinusOneProduct_NoExtraSpace,
 }
 
 func TestFindBiggestProductNMinusOneProduct(t *testing.T) {

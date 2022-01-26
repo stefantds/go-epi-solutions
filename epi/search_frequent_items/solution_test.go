@@ -14,7 +14,7 @@ import (
 	utils "github.com/stefantds/go-epi-judge/test_utils"
 )
 
-type solutionFunc = func(int, <-chan string) []string
+type solutionFunc = func(int, ResetIterator) []string
 
 var solutions = []solutionFunc{
 	SearchFrequentItems,
@@ -68,14 +68,22 @@ func TestSearchFrequentItems(t *testing.T) {
 	}
 }
 
-func searchFrequentItemsWrapper(solution solutionFunc, k int, stream []string) []string {
-	streamChan := make(chan string, len(stream))
-	for _, v := range stream {
-		streamChan <- v
-	}
-	close(streamChan)
+type valuesStream struct {
+	values []string
+}
 
-	return solution(k, streamChan)
+func (v valuesStream) Iterator() <-chan string {
+	valuesChan := make(chan string, len(v.values))
+	for _, v := range v.values {
+		valuesChan <- v
+	}
+	close(valuesChan)
+
+	return valuesChan
+}
+
+func searchFrequentItemsWrapper(solution solutionFunc, k int, stream []string) []string {
+	return solution(k, valuesStream{values: stream})
 }
 
 func equal(result []string, expected []string) bool {

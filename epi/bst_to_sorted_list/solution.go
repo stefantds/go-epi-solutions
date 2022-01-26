@@ -5,6 +5,35 @@ import (
 )
 
 func BstToDoublyLinkedList(t *tree.BSTNode) *tree.BSTNode {
-	// TODO - Add your code here
-	return nil
+	head, _ := bstToList(t)
+	return head
+}
+
+func bstToList(t *tree.BSTNode) (start, end *tree.BSTNode) {
+	if t == nil {
+		return t, t
+	}
+
+	leftStart, leftEnd := bstToList(t.Left)
+	rightStart, rightEnd := bstToList(t.Right)
+
+	t.Left = leftEnd
+	if leftEnd != nil {
+		leftEnd.Right = t
+	}
+
+	t.Right = rightStart
+	if rightStart != nil {
+		rightStart.Left = t
+	}
+
+	if leftStart == nil {
+		leftStart = t
+	}
+
+	if rightEnd == nil {
+		rightEnd = t
+	}
+
+	return leftStart, rightEnd
 }

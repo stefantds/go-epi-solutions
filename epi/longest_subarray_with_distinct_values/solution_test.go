@@ -17,6 +17,7 @@ type solutionFunc = func([]int) int
 
 var solutions = []solutionFunc{
 	LongestSubarrayWithDistinctEntries,
+	LongestSubarrayWithDistinctEntriesUsingSet,
 }
 
 func TestLongestSubarrayWithDistinctEntries(t *testing.T) {

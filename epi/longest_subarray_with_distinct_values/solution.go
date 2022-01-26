@@ -26,3 +26,28 @@ func LongestSubarrayWithDistinctEntries(a []int) int {
 
 	return maxSubarrayLength
 }
+
+func LongestSubarrayWithDistinctEntriesUsingSet(a []int) int {
+	// currentValues will hold the values in the current window
+	currentValues := make(map[int]bool)
+	maxSubarrayLength := 0
+	windowStart := 0
+
+	for _, v := range a {
+		_, exists := currentValues[v]
+		if exists {
+			for a[windowStart] != v {
+				delete(currentValues, a[windowStart])
+				windowStart++
+			}
+			// a[windowStart] == v; we still need to advance the window start by 1
+			windowStart++
+		}
+		currentValues[v] = true
+		if len(currentValues) > maxSubarrayLength {
+			maxSubarrayLength = len(currentValues)
+		}
+	}
+
+	return maxSubarrayLength
+}

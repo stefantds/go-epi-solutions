@@ -17,6 +17,7 @@ import (
 type solutionFunc = func(*PostingListNode) *PostingListNode
 
 var solutions = []solutionFunc{
+	CopyPostingsListExtraSpace,
 	CopyPostingsList,
 }
 

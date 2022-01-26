@@ -17,6 +17,7 @@ type solutionFunc = func([]int) int
 
 var solutions = []solutionFunc{
 	MaxSubarraySumInCircular,
+	MaxSubarraySumInCircular_MinSubstract,
 }
 
 func TestMaxSubarraySumInCircular(t *testing.T) {

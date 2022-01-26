@@ -16,7 +16,8 @@ import (
 type solutionFunc = func(string) int
 
 var solutions = []solutionFunc{
-	LongestMatchingParentheses,
+	LongestMatchingParenthesesO1Space,
+	LongestMatchingParenthesesUsingStack,
 }
 
 func TestLongestMatchingParentheses(t *testing.T) {

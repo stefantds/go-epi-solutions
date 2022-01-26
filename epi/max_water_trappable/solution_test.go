@@ -17,6 +17,7 @@ type solutionFunc = func([]int) int
 
 var solutions = []solutionFunc{
 	CalculateTrappingWater,
+	CalculateTrappingWaterUsingStack,
 }
 
 func TestCalculateTrappingWater(t *testing.T) {

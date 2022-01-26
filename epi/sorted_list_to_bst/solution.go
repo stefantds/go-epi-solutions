@@ -5,8 +5,7 @@ import (
 )
 
 func BuildBSTFromSortedList(l *list.DoublyLinkedNode, length int) *list.DoublyLinkedNode {
-	head := l
-	result, _ := buildBST(0, length, head)
+	result, _ := buildBST(0, length, l)
 	return result
 }
 
@@ -20,17 +19,14 @@ func buildBST(start, end int, currentHead *list.DoublyLinkedNode) (result, next 
 	// build a bst from the first half of the list
 	left, head := buildBST(start, mid, currentHead)
 
-	// curr is the new root
-	curr := head
-
 	// set the left child
-	curr.Prev = left
+	head.Prev = left
 
 	// build a bst from the second half of the list (without mid)
 	nextCurr, nextHead := buildBST(mid+1, end, head.Next)
 
 	// set the right child
-	curr.Next = nextCurr
+	head.Next = nextCurr
 
-	return curr, nextHead
+	return head, nextHead
 }

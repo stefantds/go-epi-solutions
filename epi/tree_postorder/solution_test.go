@@ -18,6 +18,7 @@ type solutionFunc = func(*tree.BinaryTreeNode) []int
 
 var solutions = []solutionFunc{
 	PostorderTraversal,
+	PostorderTraversalNoRecursion,
 }
 
 func TestPostorderTraversal(t *testing.T) {
