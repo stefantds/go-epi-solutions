@@ -17,6 +17,7 @@ type solutionFunc = func([]int, int) bool
 
 var solutions = []solutionFunc{
 	ExpressionSynthesis,
+	ExpressionSynthesis3PowN,
 }
 
 func TestExpressionSynthesis(t *testing.T) {

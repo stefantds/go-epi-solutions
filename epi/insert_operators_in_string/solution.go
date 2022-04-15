@@ -70,3 +70,56 @@ func evaluate(operands []int, operators []operator) int {
 
 	return sumEval
 }
+
+func ExpressionSynthesis3PowN(digits []int, target int) bool {
+	if len(digits) == 0 {
+		return target == 0
+	}
+	return helper(digits, target, 1, digits[0], 0, digits[0], digits[0])
+}
+
+func helper(digits []int, target int, pos int, currentValue int, valUntilLastPlus int, valSinceLastPlus int, lastNumber int) bool {
+	if pos >= len(digits) {
+		return currentValue == target
+	}
+
+	// try plus
+	{
+		newValUntilLastPlus := currentValue
+		newValSinceLastPlus := digits[pos]
+		newLastNumber := digits[pos]
+		newCurrentValue := newValUntilLastPlus + newValSinceLastPlus
+		if helper(digits, target, pos+1, newCurrentValue, newValUntilLastPlus, newValSinceLastPlus, newLastNumber) {
+			return true
+		}
+	}
+
+	// try multiply
+	{
+		newValUntilLastPlus := valUntilLastPlus
+		newValSinceLastPlus := valSinceLastPlus * digits[pos]
+		newLastNumber := digits[pos]
+		newCurrentValue := newValUntilLastPlus + newValSinceLastPlus
+		if helper(digits, target, pos+1, newCurrentValue, newValUntilLastPlus, newValSinceLastPlus, newLastNumber) {
+			return true
+		}
+	}
+
+	// try concatenate
+	{
+		newValUntilLastPlus := valUntilLastPlus
+		newLastNumber := lastNumber*10 + digits[pos]
+		var newValSinceLastPlus int
+		if lastNumber != 0 {
+			newValSinceLastPlus = valSinceLastPlus / lastNumber * newLastNumber
+		} else {
+			newValSinceLastPlus = valSinceLastPlus * newLastNumber
+		}
+		newCurrentValue := newValUntilLastPlus + newValSinceLastPlus
+		if helper(digits, target, pos+1, newCurrentValue, newValUntilLastPlus, newValSinceLastPlus, newLastNumber) {
+			return true
+		}
+	}
+
+	return false
+}
