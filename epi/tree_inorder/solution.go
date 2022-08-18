@@ -53,3 +53,28 @@ func InorderTraversal(t *tree.BinaryTreeNode) []int {
 
 	return result
 }
+
+func InorderTraversalIterV2(root *tree.BinaryTreeNode) []int {
+	result := make([]int, 0)
+	if root == nil {
+		return result
+	}
+
+	stack := make([]*tree.BinaryTreeNode, 0)
+	iter := root
+	for iter != nil || len(stack) > 0 {
+		for iter != nil {
+			stack = append(stack, iter)
+			iter = iter.Left
+		}
+
+		iter, stack = stack[len(stack)-1], stack[:len(stack)-1]
+
+		// visit node
+		result = append(result, iter.Data)
+
+		iter = iter.Right
+	}
+
+	return result
+}

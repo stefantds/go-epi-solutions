@@ -18,6 +18,7 @@ type solutionFunc = func(*tree.BinaryTreeNode) []int
 
 var solutions = []solutionFunc{
 	InorderTraversal,
+	InorderTraversalIterV2,
 }
 
 func TestInorderTraversal(t *testing.T) {
